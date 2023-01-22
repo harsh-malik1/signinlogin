@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">signin&amp;login</string>
+    <string name="welcome_message">Welcome</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="SignIn">Sign In</string>
+    <string name="Home">Home</string>
+</resources>
