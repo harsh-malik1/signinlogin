@@ -42,7 +42,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validateFields();
-                System.out.println("hello ");
             }
         });
     }
@@ -62,12 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this , "Please Validate Fields" , Toast.LENGTH_SHORT ).show();
             return false;
         }
-        RequestQueue requestQueue = Volley.newRequestQueue(SignUpActivity.this) ;
+
+        RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this) ;
         String url = "http://192.168.43.220:9080/api/user/register" ;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equalsIgnoreCase("success")){
+                System.out.println("response " + response);
+                if(response.equalsIgnoreCase("User Register Successfull")){
                     firstName.setText(null);
                     lastName.setText(null);
                     email.setText(null);
@@ -91,11 +92,10 @@ public class SignUpActivity extends AppCompatActivity {
                 params.put("last_name" , lastName.getText().toString());
                 params.put("email" , email.getText().toString());
                 params.put("password" , password.getText().toString());
-                
                 return params ;
             }
         } ;
-
+        queue.add(stringRequest) ;
         return true;
     }
 }
